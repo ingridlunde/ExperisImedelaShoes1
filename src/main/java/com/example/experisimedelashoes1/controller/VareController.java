@@ -1,7 +1,7 @@
 package com.example.experisimedelashoes1.controller;
 
 
-import com.example.experisimedelashoes1.model.Varebestilling;
+import com.example.experisimedelashoes1.model.Ordre;
 import com.example.experisimedelashoes1.repository.VareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +16,14 @@ public class VareController {
     @Autowired
     VareRepository repo;
 
-    @GetMapping("/hentAlle")
-    public List<Varebestilling> sjekkHandlekurv() {
-        return repo.visHandlekurv();
+    @GetMapping("/visOrdre")
+    public List<Ordre> visOrdre() {
+        return repo.visOrdre();
     }
 
     @PostMapping("/lagre")
-    public void registrerHandel(Varebestilling innBestilling) {
-        repo.registrerHandel(innBestilling);
+    public void registrerOrdre(Ordre innBestilling) {
+        repo.registrerOrdre(innBestilling);
     }
 
 }

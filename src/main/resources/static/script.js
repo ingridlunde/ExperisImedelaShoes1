@@ -3,10 +3,10 @@ $(function() {
 })
 
 //Når det trykkes på en vare til handlekurv
-    function leggTilVarer();
+    //function leggTilVarer();
 
 //Når varen trykkes må handlekurv opppdateres
-    function oppdaterhandlekurv();
+    //function oppdaterhandlekurv();
 }
 
 function leggTilVarer() {

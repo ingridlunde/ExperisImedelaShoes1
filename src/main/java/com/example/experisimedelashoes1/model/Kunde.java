@@ -5,16 +5,17 @@ public class Kunde {
         private String fornavn;
         private String etternavn;
         private String epost;
+        private String adresse;
         private String telefonnr;
-        private Integer antallkjop;
+
 
         //Konstruktør
-        public Kunde(String fornavn, String etternavn, String epost, String telefonnr, Integer antallkjop) {
+        public Kunde(String fornavn, String etternavn, String epost, String adresse, String telefonnr, Integer antallkjop) {
                 this.fornavn = fornavn;
                 this.etternavn = etternavn;
                 this.epost = epost;
+                this.adresse = adresse;
                 this.telefonnr = telefonnr;
-                this.antallkjop = antallkjop;
         }
         //Gettere og settere
 
@@ -50,12 +51,12 @@ public class Kunde {
                 this.telefonnr = telefonnr;
         }
 
-        public Integer getAntallkjop() {
-                return antallkjop;
+        public String getAdresse() {
+                return adresse;
         }
 
-        public void setAntallkjop(Integer antallkjop) {
-                this.antallkjop = antallkjop;
+        public void setAdresse(String adresse) {
+                this.adresse = adresse;
         }
 }
 
