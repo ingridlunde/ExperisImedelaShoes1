@@ -1,18 +1,19 @@
  --Utfører en varehandel -- plasserer i handlekurv
 
---Er det nødvendig med modell? Ligger ikke det inn i bestillingsnr?
+--Når ordren er betalt blir det opprettet en varebestilling
 CREATE TABLE VareBestilling (
 BestillingsNr INTEGER AUTO_INCREMENT NOT NULL,
 varenr INTEGER(100) NOT NULL,
 antall INTEGER(100) NOT NULL,
-modell VARCHAR(255) NOT NULL,
-størrelse VARCHAR(255) NOT NULL,
-pris INTEGER(100) NOT NULL,
+skostørrelse VARCHAR(255) NOT NULL,
+totalpris INTEGER(100) NOT NULL,
 PRIMARY KEY(BestillingsNr)
 FOREIGN KEY(VareNr, KundeNr)
 );
 
- --VareNR tas inn for å holde oversikt over tidligere kjøp, Brukes også til å telle kjøp for å generere gavekort.
+
+
+ --Varenr tas inn for å holde oversikt over tidligere kjøp, Brukes også til å telle kjøp for å generere gavekort.
  CREATE TABLE Kunde (
  kundeNr INTEGER AUTO_INCREMENT NOT NULL,
  fornavn INTEGER(100) NOT NULL,
@@ -26,13 +27,27 @@ FOREIGN KEY(VareNr, KundeNr)
 
 
 
---Ledige størrelser ?? egen?
-CREATE TABLE Varelager
-    VareNr
-    modellNr
-    Antall
+--HEr har jeg oversikt over hva jeg har på lager
+CREATE TABLE Vare (
+    vareNr INTEGER AUTO_INCREMENT NOT NULL,
+    modellNr INTEGER AUTO_INCREMENT NOT NULL,
+    skostørrelse INTEGER (100) NOT NULL,
+    antall
+    beskrivelse
+    pris
+        FOREIGN KEY(Varetype)
+
+-- varetype for å kunne ha støtte for utvidelse til klokker eller annet.
+CREATE TABLE Varetype (
+        produkttype
+
+        FOREIGN KEY(Varetype)
+
+        )
 
 
+
+--synker priser og beskrivelser hver natt. Ønsker å ha dette lokalt.
 --Egen tabell for hvert merke. Viser bare et eksempelmerke for sko og klokker
 
 --Eks sko. Dette blir lagt inn på server og skal ikke lages ny tabell for her. Men fint å ha et bilde av modellen
