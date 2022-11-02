@@ -10,7 +10,7 @@ størrelse VARCHAR(255) NOT NULL,
 pris INTEGER(100) NOT NULL,
 PRIMARY KEY(BestillingsNr)
 FOREIGN KEY(VareNr, KundeNr)
-)
+);
 
  --VareNR tas inn for å holde oversikt over tidligere kjøp, Brukes også til å telle kjøp for å generere gavekort.
  CREATE TABLE Kunde (
@@ -22,7 +22,7 @@ FOREIGN KEY(VareNr, KundeNr)
  antallkjop INTEGER(100) NOT NULL),
      PRIMARY KEY(Kundenr)
      FOREIGN KEY(Bestillingsnr)
-     )
+     );
 
 
 
@@ -37,14 +37,14 @@ CREATE TABLE Varelager
 
 --Eks sko. Dette blir lagt inn på server og skal ikke lages ny tabell for her. Men fint å ha et bilde av modellen
 
-CREATE TABLE Moma (
+CREATE TABLE MomaShoes (
  modellNr INTEGER AUTO_INCREMENT NOT NULL,
  merke VARCHAR(255) NOT NULL,
  navn VARCHAR(255) NOT NULL,
  modell VARCHAR(255) NOT NULL,
  PRIMARY KEY(modellNr),
  FOREIGN KEY (vareNr, KundeNr)
-)
+);
 
 --Eks klokke
 CREATE TABLE MauriceLacroix
@@ -55,6 +55,6 @@ CREATE TABLE MauriceLacroix
     modell   VARCHAR(255) NOT NULL,
     PRIMARY KEY (modellNr),
     FOREIGN KEY (vare)
-)
+);
 
 
