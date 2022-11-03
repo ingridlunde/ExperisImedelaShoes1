@@ -1,23 +1,22 @@
 $(function() {
     lastInnVarer();
-})
+});
 
-//Når det trykkes på en vare til handlekurv
-    //function leggTilVarer();
+
 
 //Når varen trykkes må handlekurv opppdateres
     //function oppdaterhandlekurv();
 }
 
-function leggTilVarer() {
+function lastInnVarer() {
     $.get("/hentVarer", function (varer) {
-        formaterVarer(varer); //er den nødvendig?
+        formaterVarer(varer);
     })
 }
 
 function registrerHandel () {
 
-    //Må kunde registrere seg? Epost for å få kvittering
+    //Epost for å få kvittering
     //Kunde må ikke ha addresse, når det gjøres fra butikken.
     //Kopler attributtene til id i HTML.
     const varenr = $("#vare");
@@ -39,16 +38,20 @@ function registrerHandel () {
         adresse: adresse.val()
     };
 
-}
+
     //Sjekke bestilling før lagring
     if (!sjekkHandel(bestilling)) {
         return;
     }
 
     //Lagrer inputene
-    $.post("/lagre", bestilling, function() {
+    $.post("/lagre", bestilling, function () {
 
     });
+
+}
+
+function registrerKunde(); {
 
 //Hvis kunde ønsker å registrere seg.
 const registrerKunde = {
@@ -61,13 +64,22 @@ const registrerKunde = {
     antallkjop: antallkjop.val(),
 }
 
-registrerKunde();
+//Lagre kunde
+    $.post("/registrerKunde", registrerkunde, function() {
+    })
+}
 
-    $.post("/registrerKunde", registrerkunde, function()})
+function oppdaterOmsetning () {
+
+
+}
+
+function varerSendt() {
+
+
+}
 
 
 
 
 
-    // Viser handlekurv som tar getkal frå server og henter handlekurv
-    visHandlekurv();
