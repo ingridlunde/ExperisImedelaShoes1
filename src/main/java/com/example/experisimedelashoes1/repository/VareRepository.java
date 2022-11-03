@@ -19,13 +19,8 @@ public class VareRepository {
     //pakkesendt blir satt som boolean false og endret til true når pakken blir sendt.
     //VArenr på varen som blir lagt i kurven blir lagt inn. hvordan få inn foreign key med kunde og varenr, summere pris per vare?
     public void registrerOrdre(Ordre innBestilling) {
-        String sql = "INSERT INTO Ordre ( antall, pakkeSendt) VALUES(?,?,?,?)";
-        db.update(sql, innBestilling.getAntall(), innBestilling.getTotalpris(), innBestilling.isPakkeSendt());
-    }
-
-    public void registrerKunde(Kunde registrerKunde) {
-        String sql = "INSERT INTO Kunde (fornavn, etternavn, epost, adresse, telefonnr) VALUES(?,?,?,?,?)";
-        db.update(sql, registrerKunde.getFornavn(), registrerKunde.getEtternavn(), registrerKunde.getEpost(), registrerKunde.getTelefonnr(), registrerKunde.getAdresse());
+        String sql = "INSERT INTO Ordre (varenr, antall, pakkeSendt) VALUES(?,?)";
+        db.update(sql, innBestilling.getAntall(), innBestilling.isPakkeSendt());
     }
 
 
@@ -41,6 +36,12 @@ public class VareRepository {
         List<Varelager> alleVarer = db.query(sql, new BeanPropertyRowMapper<>(Varelager.class));
         return alleVarer;
 
+    }
+
+    public List<Ordre> sjekkAntallOrdre() {
+        String sql = "SELECT SUM(ordrenr) AS antallOrdre FROM Ordre group by kundenr";
+        List<Ordre> antallOrdre = db.query(sql, new BeanPropertyRowMapper<>(Ordre.class));
+        return antallOrdre;
     }
 }
 

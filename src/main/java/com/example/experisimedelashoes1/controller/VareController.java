@@ -18,7 +18,7 @@ public class VareController {
     @Autowired
     VareRepository repo;
 
-    //vis ordre? Vis handlekurv
+    //vis ordre. Bare tilgjengelig som ansatt
     @GetMapping("/visOrdre")
     public List<Ordre> visOrdre() {
         return repo.visOrdre();
@@ -29,15 +29,16 @@ public class VareController {
         repo.registrerOrdre(innBestilling);
     }
 
-    @PostMapping("/registrerKunde")
-    public void registrerKunde(Kunde registrerKunde) {
-        repo.registrerKunde(registrerKunde);
-    }
-
     //getkall for å hente inn varer til nettside?
-
     @GetMapping("/hentVarer")
     public List<Varelager> visVarer() {
         return repo.visVarer();
     }
+
+    @GetMapping("/antallOrdre")
+    public List<Ordre> sjekkAntallOrdre () {
+        return repo.sjekkAntallOrdre();
+    }
 }
+
+

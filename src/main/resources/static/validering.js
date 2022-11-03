@@ -1,0 +1,8 @@
+function sjekkOrdre() {
+
+}
+
+function sjekkKunde() {
+
+}
+
